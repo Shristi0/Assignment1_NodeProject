@@ -11,7 +11,7 @@ exports.employee_api = async function(request, response){
     }catch(e){
         console.log('Error is: ')
         console.log(e)
-        return response.status(204).json({'error':e})
+        return response.json({'error': 'Error'})
     }
 }
 
@@ -54,7 +54,7 @@ exports.destroy = async function(request, response){
         return response.status(204).json({'error': 'Employee Data not found'});
     }else{
         await employee.remove();
-        return employee.status(204).json(employee);
+        return response.status(204).json(employee);
     }
 }
 
