@@ -5,13 +5,9 @@ const fetch = require('node-fetch');
 exports.employee_api = async function(request, response){
     try{
         let api_res = await fetch("http://dummy.restapiexample.com/api/v1/employees");
-        if (api_res.ok) { 
-            let employee_json = await api_res.json();
-            return response.status(200).json(employee_json);
-        } 
-        else {
-            return response.status(204).json({'error':api_res.status}); 
-        }
+        let employee_json = await api_res.json();
+        return response.status(200).json(employee_json);
+      
     }catch(e){
         console.log('Error is: ')
         console.log(e)
