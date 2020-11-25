@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
-const port = 8000;
 
+mongoose.Promise=global.Promise;
 
-(async ()=>{
-    try {
-        await mongoose.connect('mongodb://localhost/employee', {useNewUrlParser: true});
-        console.log("Connected to MongoDB Successfully.")
-    } catch (error) {
-        console.log(`Error Connecting to MongoDB. Reason is: ${error}`)
-    }
+(async () => {
+	try{
+		await mongoose.connect('mongodb://localhost/employee', {useNewUrlParser: true});
+        console.log('Mongodb is successfully connected');
+    } catch(e) {
+		console.log("Error connnecting mongodb. Reason:", e)
+	}
 })();
 
+require('./model/employee_model.js');
 require('./index.js');
